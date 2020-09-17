@@ -54,6 +54,11 @@ const parserHtml = (address, html) => {
     }
   }
 
+  if (responsiveLogo === '') {
+    let src = img1Ids[img1Ids.length-1].getAttribute("src");
+    responsiveLogo = `${address}${src}`;
+  }
+
   const imgLogo = root.querySelectorAll("img")
   for (let i=0; i<imgLogo.length; i++) {
     let src = imgLogo[i].getAttribute("src");
