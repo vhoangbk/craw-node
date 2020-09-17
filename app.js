@@ -35,6 +35,7 @@ const parserHtml = (address, html) => {
 
   let clientLogo = '';
   let nitecoLogo = '';
+  let logo = '';
   let responsiveLogo = '';
   
   let ipadElement = root.querySelector("#text1 img");
@@ -50,6 +51,14 @@ const parserHtml = (address, html) => {
       nitecoLogo = `${address}${src}`;
     } else if(src === 'responsive.png'){
       responsiveLogo = `${address}${src}`;
+    }
+  }
+
+  const imgLogo = root.querySelectorAll("img")
+  for (let i=0; i<imgLogo.length; i++) {
+    let src = imgLogo[i].getAttribute("src");
+    if(src === 'logo.png'){
+      logo = `${address}${src}`;
     }
   }
 
@@ -74,7 +83,7 @@ const parserHtml = (address, html) => {
 
   let s1 = {
     name: 'the brief',
-    image: nitecoLogo,
+    image: logo,
     description: pTheBrief
   }
 
@@ -91,7 +100,8 @@ const parserHtml = (address, html) => {
   }
 
   let result = {
-    clientLogo: clientLogo,
+    clientLogo,
+    nitecoLogo,
     data: [s1, s2, s3]
   }
 
@@ -107,7 +117,7 @@ const main = async () => {
     let id = list[i].id;
     data[id] = {...htmlParser}
   }
-  console.log(JSON.stringify(data));
+  // console.log(JSON.stringify(data));
   writeFileSync('data.json', JSON.stringify(data), 'utf-8');
 }
 
