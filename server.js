@@ -17,6 +17,6 @@ app.get('/article/:id', (req, res) => {
   res.send(JSON.parse(data)[req.params.id]);
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('Example app listening on port 3000');
 });
