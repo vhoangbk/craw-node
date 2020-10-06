@@ -1,11 +1,13 @@
-import {readFile, readFileSync, writeFileSync} from 'fs';
-import fetch from 'node-fetch';
-import { parse } from 'node-html-parser';
-import download from 'image-downloader';
+// import {createWriteStream, readFile, readFileSync, writeFileSync} from 'fs';
+// import fetch from 'node-fetch';
+// import { parse } from 'node-html-parser';
 
-const getList = () => {
+// const fs = require('fs');
+// const fetch = require('node-fetch');
+
+function getList(){
   return new Promise((resolve, reject) => {
-    readFile('./public/list.json', 'utf8', (err, data) => {
+    fs.readFile('list.json', 'utf8', (err, data) => {
       if(err) {
         reject(err);
       }else{
@@ -15,24 +17,18 @@ const getList = () => {
   })
 }
 
-const downloadImg = async (url) => {
-    let arr = url.split('/');
-    let brand = arr[arr.length-2];
-    let name = arr[arr.length-1];
-    let path  = await download.image({
-        url: url,
-        dest: `public/img/${brand}_${name}`
-    });
-    return 'https://ncs-node.herokuapp.com/'  + path.filename.replace('public', 'assets');
-}
-
-const getHtml = async (url) => {
-  let html = await fetch(url).then(res => res.text());
+async function getHtml(url) {
+  let html = await fetch(url, {mode: 'no-cors'}).then(res => res.text());
+  console.log(html);
   return html;
+  // fetch('https://github.com/', {
+  //   mode: 'no-cors'
+  // })
+  //   .then(res => res.text())
+  //   .then(body => console.log(body));
 }
 
-const parserHtml = async (address, html) => {
-  console.log(`parser ${address}`)
+function parserHtml(address, html){
   const root = parse(html);
 
   let clientLogo = '';
@@ -88,47 +84,45 @@ const parserHtml = async (address, html) => {
     }
   }
 
-  let logoPath = await downloadImg(logo);
   let s1 = {
     name: 'the brief',
-    image: logoPath,
+    image: logo,
     description: pTheBrief
   }
 
-  let imageIpadPath = await downloadImg(imageIpad);
   let s2 = {
     name: 'the solution',
-    image: imageIpadPath,
+    image: imageIpad,
     description: pSolution
   } 
 
-  let responsiveLogoPath = await downloadImg(responsiveLogo);
   let s3 = {
     name: 'technical details',
-    image: responsiveLogoPath,
+    image: responsiveLogo,
     description: pTechnical
   }
 
-  let clientLogoPath = await downloadImg(clientLogo);
-  let nitecoLogoPath = await downloadImg(nitecoLogo);
   let result = {
-    clientLogoPath,
-    nitecoLogoPath,
+    clientLogo,
+    nitecoLogo,
     data: [s1, s2, s3]
   }
 
   return result;
 }
 
-export const craw = async () => {
+async function crawer(){
   let list = await getList();
-  let data = {};
-  for (let i=0; i<list.length; i++) {
-    let html = await getHtml(list[i].link);
-    let htmlParser = await parserHtml(list[i].link, html)
-    let id = list[i].id;
-    data[id] = {...htmlParser}
-  }
-  writeFileSync('./public/data.json', JSON.stringify(data), 'utf-8');
-  console.log('done');
+  console.log(list);
+  // let data = {};
+  // for (let i=0; i<list.length; i++) {
+  //   let html = await getHtml(list[i].link);
+  //   let htmlParser = parserHtml(list[i].link, html)
+  //   let id = list[i].id;
+  //   data[id] = {...htmlParser}
+  // }
+  // // console.log(JSON.stringify(data));
+  // writeFileSync('data.json', JSON.stringify(data), 'utf-8');
 }
+
+

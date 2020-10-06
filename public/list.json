@@ -1,0 +1,94 @@
+{
+    "case-studies" : [ {
+      "group_mask" : 1,
+      "id" : "cs_episerver0",
+      "img" : "http://ncs.niteco.se/bemz/ipad-image.png",
+      "link" : "http://ncs.niteco.se/bemz/",
+      "name" : "Bemz",
+      "tags" : [ "bemz" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver1",
+      "img" : "http://ncs.niteco.se/high/ipad-image.png",
+      "link" : "http://ncs.niteco.se/high/",
+      "name" : "High Companies",
+      "tags" : [ "high", "companies" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver2",
+      "img" : "http://ncs.niteco.se/ahum/ipad-image.png",
+      "link" : "http://ncs.niteco.se/ahum/",
+      "name" : "Ahum",
+      "tags" : [ "ahum" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver3",
+      "img" : "http://ncs.niteco.se/bisnode/ipad-image.png",
+      "link" : "http://ncs.niteco.se/bisnode/",
+      "name" : "Bisnode",
+      "tags" : [ "bisnode" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver4",
+      "img" : "http://ncs.niteco.se/brokenwood/mac-iphone.png",
+      "link" : "http://ncs.niteco.se/brokenwood/",
+      "name" : "Brokenwood",
+      "tags" : [ "brokenwood" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver5",
+      "img" : "http://ncs.niteco.se/amelia/ipad-image.png",
+      "link" : "http://ncs.niteco.se/amelia/",
+      "name" : "Amelia",
+      "tags" : [ "amelia" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver6",
+      "img" : "http://ncs.niteco.se/privateaffair/ipad-image.png",
+      "link" : "http://ncs.niteco.se/privateaffair/",
+      "name" : "Private Affair",
+      "tags" : [ "private", "affair" ]
+    }, {
+      "group_mask" : 1,
+      "id" : "cs_episerver7",
+      "img" : "http://ncs.niteco.se/vivilla/ipad-image.png",
+      "link" : "http://ncs.niteco.se/vivilla/",
+      "name" : "Vivilla",
+      "tags" : [ "vivilla" ]
+    }, {
+      "group_mask" : 2,
+      "id" : "cs_other1",
+      "img" : "http://ncs.niteco.se/boncom/ipad-image.png",
+      "link" : "http://ncs.niteco.se/boncom/",
+      "name" : "boncom",
+      "tags" : [ "boncom" ]
+    }, {
+      "group_mask" : 2,
+      "id" : "cs_other2",
+      "img" : "http://ncs.niteco.se/buraphawood/the-macbook.png",
+      "link" : "http://ncs.niteco.se/buraphawood/",
+      "name" : "buraphawood",
+      "tags" : [ "buraphawood" ]
+    }, {
+      "group_mask" : 2,
+      "id" : "cs_other3",
+      "img" : "http://ncs.niteco.se/dagensnyheter/mac-iphone.png",
+      "link" : "http://ncs.niteco.se/dagensnyheter/",
+      "name" : "Dagens Nyheter",
+      "tags" : [ "dagens", "nyheter" ]
+    }, {
+      "group_mask" : 2,
+      "id" : "cs_other4",
+      "img" : "http://ncs.niteco.se/dialingapp/the-intro.png",
+      "link" : "http://ncs.niteco.se/dialingapp/",
+      "name" : "Dialing",
+      "tags" : [ "dialing" ]
+    }, {
+      "group_mask" : 2,
+      "id" : "cs_other5",
+      "img" : "http://ncs.niteco.se/financialhub/the-intro.png",
+      "link" : "http://ncs.niteco.se/financialhub/",
+      "name" : "Financial Hub",
+      "tags" : [ "financial", "hub" ]
+    } ]
+  }

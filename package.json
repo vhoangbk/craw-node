@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm app.js"
+    "start": "node -r esm server.js"
   },
   "engines": {
     "node": "12.14.1"
@@ -17,9 +17,12 @@
     "babel-preset-es2015": "^6.24.1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "image-downloader": "^4.0.1",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^1.2.20"
   }
