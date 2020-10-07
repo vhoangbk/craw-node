@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm server.js"
+    "start": "nodemon -r esm server.js"
   },
   "engines": {
     "node": "12.14.1"
@@ -24,6 +24,7 @@
     "fs": "0.0.1-security",
     "image-downloader": "^4.0.1",
     "node-fetch": "^2.6.1",
-    "node-html-parser": "^1.2.20"
+    "node-html-parser": "^1.2.20",
+    "nodemon": "^2.0.4"
   }
 }

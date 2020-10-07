@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <style>
+            .cls_canvas{
+                width: 512px;
+                height: 512px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/craw">Craw</a>
+        <div>
+            <label for="files_frame" class="btn">chọn khung: </label>
+            <input id="files_frame" type="file" accept="image/png, image/jpeg" onchange="onChangeFrame(this)"/>
+        </div>
+        <div>
+            <label for="files_photo" class="btn">chọn ảnh: </label>
+            <input id="files_photo" type="file" accept="image/png, image/jpeg" onchange="onChangePhoto(this)">
+        </div>
+
+
+        <a href="#" style="display: block;" onclick="downloadFile(this)">tải về</a>
+
+        <div>
+            <img style="width: 512px; height: 512px; display: none;" id="frame_image">
+            <img style="width: 512px; height: 512px; display: none;" id="photo_image">
+        </div>
+    
+
+        <div>
+            <canvas style="width: 512px; height: 512px; background-color: white;" id="canvas" class="cls_canvas" >Xin lỗi, trình duyệt bạn không hỗ trợ.</canvas>
+        </div>
+    </body>
+
+    <script>
+
+        var frameImage = document.getElementById("frame_image");
+        var photoImage = document.getElementById("photo_image");
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+
+        var canvasWidth = canvas.width = 1024;
+        var canvasHeight = canvas.height = 1024;
+
+        let fileName = 'download';
+
+        function onChangeFrame(input){
+            var url = input.value;
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    frameImage.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function onChangePhoto(input){
+            var url = input.value;
+            fileName = url.substring(url.lastIndexOf("\\") + 1);
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    photoImage.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function drawCurrentImage()
+        {
+            context.clearRect(0, 0, canvasWidth, canvasHeight);
+        
+            context.fillStyle = "#ffffff";
+            context.fillRect (0, 0, canvasWidth, canvasHeight);
+            context.drawImage(frameImage, 0, 0, canvasWidth, canvasHeight);
+            context.drawImage(photoImage, 20, 150, canvasWidth-40, canvasHeight-270);
+        };
+
+        frameImage.onload = function() {
+            drawCurrentImage();
+        }
+
+        photoImage.onload = function() {
+            drawCurrentImage();
+        }
+
+        function downloadFile(button) {
+            console.log('downloadFile...');
+            var dt = document.getElementById("canvas").toDataURL("image/jpeg");
+            button.href = dt;
+            button.download = fileName;
+        };
+
+
+    </script>
+</html>

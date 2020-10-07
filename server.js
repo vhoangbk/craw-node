@@ -1,7 +1,7 @@
 import express from 'express';
 import ejs from 'ejs';
 import {readFileSync} from 'fs';
-import {craw} from './app'
+import {craw} from './crawer'
 import cors from 'cors';
 
 const app = express();
@@ -11,12 +11,16 @@ app.set('view engine', 'ejs');
 
 app.use('/', (req, res, next) => {
   console.log('[REQUEST]', req.url);
-  next();
+  if (req.url === '/') {
+    res.render('index');
+  } else {
+    next();
+  }
 });
 
 app.get('/craw', (req, res) => {
   craw();
-  res.render('craw');
+  res.render('index');
 })
 
 
